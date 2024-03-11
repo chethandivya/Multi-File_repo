@@ -1,0 +1,48 @@
+1. Azure - VM
+
+2. Maven 
+3. tools 
+
+Trigger image
+4. Jfrog (repository)
+
+Delegators Vs connectors
+
+Environment
+
+3 differnces  fixed value, Regex expression
+
+errors/challenges faced while
+
+email notifications
+ 
+jenkins:
+chethan14
+8792382202
+
+jfrog: 
+jenkins
+Petclinic@123
+
+jfrog: 
+chethanramaiah chethanramaiah14
+8792382202
+
+docker
+chethanrishab
+8792382202
+
+github
+chethandivya
+Rishab$3
+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
+
+Demo_Corrections
+3 points:
+1. Scan - CI Trivy, Repository scan - SCM - scan
+2. Artifactory Scan - Trivy
+2. Trigger - Auto trigger (Jfrog)
+3. AutoTrigger - Regex Expression
+4. AutoTrigger - Runtime
+5. 
+6.
