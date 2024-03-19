@@ -6,3 +6,77 @@ downloaded_files=$(jfrog rt ls <artifactory_repo_path> --user <username> --passw
 # Store the list of downloaded files in a variable or a file
 echo "$downloaded_files" > downloaded_files.txt
 
+
+pipeline:
+  name: notification-2
+  identifier: notification2
+  projectIdentifier: epay_pg
+  orgIdentifier: IST_ePay
+  tags: {}
+  notificationRules:
+    - name: notification
+      identifier: notification
+      pipelineEvents:
+        - type: AllEvents
+      notificationMethod:
+        type: Email
+        spec:
+          userGroups: []
+          recipients:
+            - rajesh.kavalakuntla@fisglobal.com
+      enabled: true
+  stages:
+    - stage:
+        name: notificaiton
+        identifier: notificaiton
+        description: ""
+        type: Custom
+        spec:
+          execution:
+            steps:
+              - step:
+                  type: ShellScript
+                  name: ShellScript_1
+                  identifier: ShellScript_1
+                  spec:
+                    shell: Bash
+                    executionTarget: {}
+                    source:
+                      type: Inline
+                      spec:
+                        script: |-
+                          pwd
+
+                          touch test.txt
+                          ls -lrth
+                    environmentVariables: []
+                    outputVariables: []
+                  timeout: 10m
+              - step:
+                  name: Email_1
+                  identifier: Email_1
+                  template:
+                    templateRef: notify_test
+                    versionLabel: v1
+              - step:
+                  type: Email
+                  name: Email_2
+                  identifier: Email_2
+                  spec:
+                    to: rajesh.kavalakuntla@fisglobal.com
+                    cc: ""
+                    subject: test
+                    body: |-
+                      hi,
+
+                      Vasu
+                  timeout: 10m
+          environment:
+            environmentRef: <+input>
+            deployToAll: false
+            environmentInputs: <+input>
+            infrastructureDefinitions: <+input>
+        tags: {}
+  delegateSelectors:
+    - mcp-useast2lev1-dev
+
