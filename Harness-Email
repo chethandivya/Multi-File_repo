@@ -1,0 +1,8 @@
+#!/bin/bash
+ 
+# Fetch the list of downloaded files from Artifactory
+downloaded_files=$(jfrog rt ls <artifactory_repo_path> --user <username> --password <password>)
+ 
+# Store the list of downloaded files in a variable or a file
+echo "$downloaded_files" > downloaded_files.txt
+
